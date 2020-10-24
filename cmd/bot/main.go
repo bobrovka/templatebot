@@ -5,12 +5,12 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/bobrovka/templatebot/config"
+	"github.com/bobrovka/templatebot/internal/config"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
 func main() {
-	port := os.Getenv("port")
+	port := os.Getenv("PORT")
 
 	cfg := config.Config{
 		TgToken: "1375298760:AAGUhlCpoiEp5PXcN_b38nrWN40-r0jDKQ0",
