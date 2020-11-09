@@ -1,20 +1,20 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
-	"os"
 
 	"github.com/bobrovka/templatebot/internal/config"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
 func main() {
-	port := os.Getenv("PORT")
+	port := "8090"
 
 	cfg := config.Config{
-		TgToken: "1375298760:AAGUhlCpoiEp5PXcN_b38nrWN40-r0jDKQ0",
-		Webhook: "https://somedifferenttestbot.herokuapp.com",
+		TgToken: "your token",
+		Webhook: "ngrok https url",
 	}
 
 	go func() {
@@ -34,9 +34,9 @@ func main() {
 	log.Println("Webhook created")
 
 	for update := range bot.ListenForWebhook("/") {
+		fmt.Println("Got message: ", update.Message.Text)
 		if _, err := bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, "A: "+update.Message.Text)); err != nil {
 			log.Println(err)
 		}
 	}
-	_ = port
 }
