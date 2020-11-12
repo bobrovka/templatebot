@@ -1,6 +1,6 @@
 package config
 
-type Config struct {
+type Сonfig struct {
 	TgToken string
 	Webhook string
 }
